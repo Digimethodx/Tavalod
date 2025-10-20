@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>گزارش تولد زودکس (تماس‌ها و تیکت‌ها)</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.003.1/fonts/webfonts/Vazirmatn-font-face.css" rel="stylesheet"/>
+  <style>
+    :root{--bg:#f7fbff;--card:#ffffff;--ink:#17324d;--muted:#6b8aab;--accent:#2f80ed;--accent2:#00b894;--warn:#ff9f43;--danger:#e74c3c;}
+    html,body{background:linear-gradient(135deg,#f6fbff,#e8f1ff);margin:0;color:var(--ink);font-family:"Vazirmatn", system-ui, -apple-system, Segoe UI, Roboto, sans-serif}
+    .wrap{max-width:1120px;margin:24px auto;padding:0 16px}
+    .title{font-weight:800;font-size:28px;letter-spacing:.2px;margin:8px 0 4px}
+    .subtitle{color:var(--muted);margin-top:0}
+    .grid{display:grid;gap:14px}
+    .grid.cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+    @media (max-width:1000px){.grid.cards{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:600px){.grid.cards{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid #dfeaf7;border-radius:16px;box-shadow:0 10px 30px rgba(43,99,167,.07);padding:16px}
+    .kpi{display:flex;align-items:baseline;justify-content:space-between}
+    .kpi h3{font-size:13px;color:var(--muted);margin:0}
+    .kpi .v{font-size:22px;font-weight:800}
+    h2.sec{font-size:18px;margin:20px 0 10px}
+    .tbl{width:100%;border-collapse:collapse;border:1px solid #dbe7f6;border-radius:12px;overflow:hidden}
+    .tbl th{background:#e3f0ff;color:#11406b;padding:10px;font-size:12px}
+    .tbl td{padding:9px 10px;border-top:1px solid #edf3fb;font-size:12.5px;text-align:center}
+    .hint{color:var(--muted);font-size:12.5px}
+    .bullets{line-height:1.9;margin:6px 0 0}
+    .badge{display:inline-block;font-size:11px;padding:3px 8px;border-radius:999px;background:#eef6ff;color:#1e5fb4;border:1px solid #d7e8ff;margin-left:6px}
+    .row{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+    @media (max-width:900px){.row{grid-template-columns:1fr}}
+    canvas{max-width:100%;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="title">گزارش تولد زودکس (تماس‌ها و تیکت‌ها)</div>
+    <p class="subtitle">بازه زمانی: <b>۲۲ تا ۲۷ مهر ۱۴۰۴</b> — نسخه HTML مدیریتی (RTL)</p>
+
+    <!-- KPI CARDS -->
+    <div class="grid cards">
+      <div class="card"><div class="kpi"><h3>مجموع تماس‌های ورودی (کل)</h3><span class="v">6484</span></div><div class="hint">خدمات مشتریان: 5785 | مجموعه‌ها: 749</div></div>
+      <div class="card"><div class="kpi"><h3>SLA میانگین (خدمات مشتریان)</h3><span class="v">83.6%</span></div><div class="hint">بهترین روز: ۲۳ مهر (89.9%)</div></div>
+      <div class="card"><div class="kpi"><h3>ASA میانگین (خدمات مشتریان)</h3><span class="v">16.9s</span></div><div class="hint">چالش: ۲۴ مهر (25s)</div></div>
+      <div class="card"><div class="kpi"><h3>AHT میانگین (خدمات مشتریان)</h3><span class="v">65.9s</span></div><div class="hint">بهترین: ۲۴ مهر (54.6s)</div></div>
+      <div class="card"><div class="kpi"><h3>Answer Rate (مجموعه‌ها)</h3><span class="v">95.8%</span></div><div class="hint">میانگین کلی ۲۲ تا ۲۷ مهر</div></div>
+      <div class="card"><div class="kpi"><h3>ASA میانگین (مجموعه‌ها)</h3><span class="v">13.4s</span></div><div class="hint">میانگین دوره جشنواره</div></div>
+      <div class="card"><div class="kpi"><h3>AHT میانگین (مجموعه‌ها)</h3><span class="v">112.4s</span></div><div class="hint">مطابق SLA</div></div>
+      <div class="card"><div class="kpi"><h3>کل تیکت‌ها</h3><span class="v">966</span></div><div class="hint">≤۸ دقیقه: 75.66% | خارج SLA: 15.01%</div></div>
+    </div>
+
+    <!-- SECTION: CS Daily Table + Charts -->
+    <h2 class="sec">۱) عملکرد تماس‌های ورودی – خدمات مشتریان</h2>
+    <div class="row">
+      <div class="card">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>تاریخ</th><th>کل تماس</th><th>پاسخ‌داده‌شده</th><th>ASA (ث)</th><th>≤20s</th><th>SLA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>۲۲ مهر</td><td>842</td><td>808</td><td>16.5</td><td>656</td><td>81.3%</td></tr>
+            <tr><td>۲۳ مهر</td><td>886</td><td>867</td><td>13.8</td><td>780</td><td>89.9%</td></tr>
+            <tr><td>۲۴ مهر</td><td>1165</td><td>1095</td><td>25.0</td><td>769</td><td>70.2%</td></tr>
+            <tr><td>۲۵ مهر</td><td>1006</td><td>946</td><td>15.6</td><td>798</td><td>84.3%</td></tr>
+            <tr><td>۲۶ مهر</td><td>964</td><td>917</td><td>14.7</td><td>799</td><td>87.1%</td></tr>
+            <tr><td>۲۷ مهر</td><td>922</td><td>895</td><td>13.9</td><td>794</td><td>88.7%</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">میانگین‌ها: SLA 83.6% | ASA 16.9s | تماس کل 5785</p>
+      </div>
+      <div class="card">
+        <canvas id="slaDaily"></canvas>
+      </div>
+    </div>
+
+    <!-- SECTION: Collections Daily (new detailed version) -->
+    <h2 class="sec">۲) عملکرد تماس‌های ورودی – مجموعه‌ها</h2>
+    <div class="row">
+      <div class="card">
+        <table class="tbl">
+          <thead>
+            <tr><th>تاریخ</th><th>شیفت</th><th>کل تماس</th><th>پاسخ‌داده‌شده</th><th>Answer Rate</th><th>ASA (ث)</th><th>AHT (ث)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="2">۲۲ مهر</td><td>۰۸–۱۶</td><td>42</td><td>39</td><td>92.9%</td><td>18.5</td><td>113.8</td></tr>
+            <tr><td>۱۶–۲۴</td><td>73</td><td>72</td><td>98.6%</td><td>6.8</td><td>106.3</td></tr>
+            <tr><td rowspan="2">۲۳ مهر</td><td>۰۸–۱۶</td><td>55</td><td>47</td><td>85.5%</td><td>17.2</td><td>129</td></tr>
+            <tr><td>۱۶–۲۴</td><td>62</td><td>62</td><td>100%</td><td>12.2</td><td>110</td></tr>
+            <tr><td rowspan="2">۲۴ مهر</td><td>۰۸–۱۶</td><td>54</td><td>52</td><td>96.3%</td><td>11.2</td><td>139.3</td></tr>
+            <tr><td>۱۶–۲۴</td><td>84</td><td>78</td><td>92.9%</td><td>24</td><td>80.5</td></tr>
+            <tr><td rowspan="2">۲۵ مهر</td><td>۰۸–۱۶</td><td>64</td><td>63</td><td>98.4%</td><td>13.8</td><td>115.1</td></tr>
+            <tr><td>۱۶–۲۴</td><td>88</td><td>87</td><td>98.9%</td><td>21.3</td><td>102.5</td></tr>
+            <tr><td rowspan="2">۲۶ مهر</td><td>۰۸–۱۶</td><td>37</td><td>35</td><td>94.6%</td><td>5.6</td><td>103.2</td></tr>
+            <tr><td>۱۶–۲۴</td><td>53</td><td>50</td><td>94.3%</td><td>12.3</td><td>101.1</td></tr>
+            <tr><td rowspan="2">۲۷ مهر</td><td>۰۸–۱۶</td><td>55</td><td>54</td><td>98.2%</td><td>11</td><td>140.7</td></tr>
+            <tr><td>۱۶–۲۴</td><td>82</td><td>77</td><td>93.9%</td><td>12.7</td><td>98.6</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">میانگین Answer Rate: ‎95.8٪ | میانگین ASA: ‎13.4 ثانیه | میانگین AHT: ‎112.4 ثانیه – عملکرد کلی عالی و مطابق SLA</p>
+      </div>
+      <div class="card"><canvas id="collectionsDaily"></canvas></div>
+    </div>
+
+    <!-- SECTION: Shift Comparison -->
+    <h2 class="sec">۳) مقایسه شیفت‌ها – خدمات مشتریان</h2>
+    <div class="row">
+      <div class="card"><canvas id="shiftBars"></canvas></div>
+      <div class="card">
+        <span class="badge">۰۸–۱۶</span> میانگین تماس/روز: 437 | ASA: 14.9s | AHT: 64.4s
+        <br/>
+        <span class="badge">۱۶–۲۴</span> میانگین تماس/روز: 568 | ASA: 18.6s | AHT: 67.8s
+      </div>
+    </div>
+
+    <!-- SECTION: Tickets -->
+    <h2 class="sec">۴) تیکت‌های پشتیبانی (۹۶۶ تیکت)</h2>
+    <div class="row">
+      <div class="card"><canvas id="ticketsPie"></canvas></div>
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>دسته‌بندی</th><th>تعداد</th><th>درصد</th></tr></thead>
+          <tbody>
+            <tr><td>پاسخ زیر ۲ دقیقه</td><td>499</td><td>51.65%</td></tr>
+            <tr><td>۲ تا ۴ دقیقه</td><td>146</td><td>15.11%</td></tr>
+            <tr><td>۴ تا ۶ دقیقه</td><td>52</td><td>5.38%</td></tr>
+            <tr><td>۶ تا ۸ دقیقه</td><td>34</td><td>3.52%</td></tr>
+            <tr><td>خارج از SLA</td><td>145</td><td>15.01%</td></tr>
+            <tr><td>سایر (باگ/رفت‌وبرگشتی)</td><td>90</td><td>9.32%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const labels=["۲۲ مهر","۲۳ مهر","۲۴ مهر","۲۵ مهر","۲۶ مهر","۲۷ مهر"];
+      const sla=[81.3,89.9,70.2,84.3,87.1,88.7];
+      const asa=[16.5,13.8,25.0,15.6,14.7,13.9];
+      const aht=[70.6,65.0,54.6,70.2,68.5,66.3];
+
+      new Chart(document.getElementById('slaDaily'),{
+        type:'line',data:{labels:labels,datasets:[{label:'SLA %',data:sla,borderColor:'#2f80ed',tension:.35,borderWidth:2,pointRadius:3}]},
+        options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:100}}}
+      });
+
+      new Chart(document.getElementById('collectionsDaily'),{
+        type:'line',
+        data:{labels:labels,datasets:[
+          {label:'Answer Rate %',data:[95.8,92.7,94.6,98.7,94.5,96.1],borderColor:'#2f80ed',borderWidth:2,tension:.35,pointRadius:3},
+          {label:'ASA (s)',data:[12.6,14.7,17.6,17.5,9.0,11.8],borderColor:'#00b894',borderWidth:2,tension:.35,pointRadius:3}
+        ]},
+        options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true}}}
+      });
+
+      new Chart(document.getElementById('shiftBars'),{
+        type:'bar',
+        data:{labels:['۰۸–۱۶','۱۶–۲۴'],datasets:[{label:'میانگین تماس/روز',data:[437,568]},{label:'ASA (s)',data:[14.9,18.6]},{label:'AHT (s)',data:[64.4,67.8]}]},
+        options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true}}}
+      });
+
+      new Chart(document.getElementById('ticketsPie'),{
+        type:'pie',
+        data:{labels:['≤۲ دقیقه','۲–۴','۴–۶','۶–۸','خارج از SLA','سایر'],datasets:[{data:[499,146,52,34,145,90]}]},
+        options:{plugins:{legend:{position:'bottom'}}}
+      });
+    });
+  </script>
+</body>
+</html>
